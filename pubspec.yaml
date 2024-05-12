@@ -1,5 +1,5 @@
 name: debounced_text_form_field
-description: "A new Flutter package project."
+description: "A drop-in replacement for TextFormField that debounces validation"
 version: 1.0.0
 repository: https://github.com/itsJoKr/debounced_text_form_field
 
