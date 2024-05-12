@@ -29,7 +29,10 @@ DebouncedTextFormField(
 
 **Special case:**
 
-The validation is run immediately when the field has correct value or when it's empty. This is to provide immediate feedback to the user that his input is valid.
+- The validation is run immediately when the field has correct value or when it's empty. This is to provide immediate feedback to the user that his input is valid.
+- There is no autovalidateMode parameter from TextFormField, as debouncing is a form of auto-validation.
+
+---
 
 Maintained by: contact@joe-it-solutions.com
 
