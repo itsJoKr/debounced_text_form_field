@@ -9,7 +9,7 @@ While there are other debouncing packages available, this one builds on foundati
 Just replace your `TextFormField` with `DebouncedTextFormField` and you are good to go. No extra widgets or builders needed.
 
 ```dart
-DebouncedFormField(
+DebouncedTextFormField(
   decoration: const InputDecoration(
     hintText: 'Enter email',
     prefixIcon: Icon(Icons.mail),
@@ -21,7 +21,7 @@ DebouncedFormField(
 You can change debounce duration. Default is 1s as that's a good balance since you want to give user time to finish typing.
 
 ```dart
-DebouncedFormField(
+DebouncedTextFormField(
   debounceDuration: Duration(milliseconds: 500),
   validator: Validator.mustBeEmail(context),
 ),
