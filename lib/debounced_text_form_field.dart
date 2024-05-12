@@ -186,7 +186,8 @@ class _DebouncedFormFieldState extends FormFieldState<String> {
       } else {
         // If there's an error, we debounce it
         _debounceTimer?.cancel();
-        _debounceTimer = Timer(widget.debounceDuration, _onDebounceTimerFinished);
+        _debounceTimer =
+            Timer(widget.debounceDuration, _onDebounceTimerFinished);
       }
     }
 

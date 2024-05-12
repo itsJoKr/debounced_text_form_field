@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Fix formatting
+
 ## 1.0.1
 
 * Change image links
