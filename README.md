@@ -5,6 +5,7 @@ Drop in replacement for `TextFormField` that debounces the validation.
 ## Motivation
 
 While there are other debouncing packages available, this one builds on foundation of Form and validation provided by Flutter. 
+
 Just replace your `TextFormField` with `DebouncedTextFormField` and you are good to go. No extra widgets or builders needed.
 
 ```dart
@@ -14,8 +15,21 @@ DebouncedFormField(
     prefixIcon: Icon(Icons.mail),
   ),
   validator: Validator.mustBeEmail(context),
-  ),
+),
 ```
+
+You can change debounce duration. Default is 1s as that's a good balance since you want to give user time to finish typing.
+
+```dart
+DebouncedFormField(
+  debounceDuration: Duration(milliseconds: 500),
+  validator: Validator.mustBeEmail(context),
+),
+```
+
+**Special case:**
+
+The validation is run immediately when the field has correct value or when it's empty. This is to provide immediate feedback to the user that his input is valid.
 
 Maintained by: contact@joe-it-solutions.com
 

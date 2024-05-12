@@ -18,6 +18,7 @@ class DebouncedFormField extends FormField<String> {
   DebouncedFormField({
     super.key,
     this.onChanged,
+    this.debounceDuration = const Duration(milliseconds: 1000),
     TextEditingController? controller,
     FocusNode? focusNode,
     TextInputType? keyboardType,
@@ -154,14 +155,13 @@ class DebouncedFormField extends FormField<String> {
         );
 
   final ValueChanged<String>? onChanged;
+  final Duration debounceDuration;
 
   @override
   FormFieldState<String> createState() => _DebouncedFormFieldState();
 }
 
 class _DebouncedFormFieldState extends FormFieldState<String> {
-  static const _debounceDuration = Duration(milliseconds: 1000);
-
   Timer? _debounceTimer;
 
   @override
@@ -186,7 +186,7 @@ class _DebouncedFormFieldState extends FormFieldState<String> {
       } else {
         // If there's an error, we debounce it
         _debounceTimer?.cancel();
-        _debounceTimer = Timer(_debounceDuration, _onDebounceTimerFinished);
+        _debounceTimer = Timer(widget.debounceDuration, _onDebounceTimerFinished);
       }
     }
 
