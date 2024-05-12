@@ -19,4 +19,4 @@ DebouncedFormField(
 
 Maintained by: contact@joe-it-solutions.com
 
-![debounced_field_footer.png](images%2Fdebounced_field_footer.png)
+![footer.png](images%2Ffooter.png)
