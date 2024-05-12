@@ -1,4 +1,5 @@
-![debounced_field_title.png](images%2Fdebounced_field_title.png)
+
+![debounced_field_title](https://github.com/itsJoKr/debounced_text_form_field/assets/11093480/c0b4e274-6fff-4b2c-96c0-fe1bac877200)
 
 Drop in replacement for `TextFormField` that debounces the validation.
 
@@ -35,4 +36,4 @@ DebouncedTextFormField(
 
 Maintained by: contact@joe-it-solutions.com
 
-![footer.png](images%2Ffooter.png)
+![debounced_field_footer](https://github.com/itsJoKr/debounced_text_form_field/assets/11093480/abf1e009-2d4b-44b0-a8a2-49541f8291f5)
