@@ -14,7 +14,7 @@ DebouncedTextFormField(
     hintText: 'Enter email',
     prefixIcon: Icon(Icons.mail),
   ),
-  validator: Validator.mustBeEmail(context),
+  validator: (value) => _mustBeValidEmail(value),
 ),
 ```
 
@@ -23,7 +23,6 @@ You can change debounce duration. Default is 1s as that's a good balance since y
 ```dart
 DebouncedTextFormField(
   debounceDuration: Duration(milliseconds: 500),
-  validator: Validator.mustBeEmail(context),
 ),
 ```
 
