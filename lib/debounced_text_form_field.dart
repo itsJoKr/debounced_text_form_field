@@ -7,15 +7,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/// DebouncedFormField designed as a drop-in replacement for TextFormField.
+/// A drop-in replacement for TextFormField that debounces the validation.
 ///
 /// All the fields are same except that there is no 'autovalidateMode' since the debouncing itself is a form of auto-validation.
 ///
 /// - [onChanged] is called whenever the value changes, only errorText is being debounced.
 /// - In case of empty field or no error, the field is validated immediately.
 /// This is usually UX you want to have to immediately remove error text. And debounce errors while user is typing.
-class DebouncedFormField extends FormField<String> {
-  DebouncedFormField({
+class DebouncedTextFormField extends FormField<String> {
+  DebouncedTextFormField({
     super.key,
     this.onChanged,
     this.debounceDuration = const Duration(milliseconds: 1000),
@@ -154,7 +154,10 @@ class DebouncedFormField extends FormField<String> {
           },
         );
 
+  /// Called when the user initiates a change to the value of the field
   final ValueChanged<String>? onChanged;
+
+  /// Duration to wait (debounced) before validating the field.
   final Duration debounceDuration;
 
   @override
@@ -167,7 +170,7 @@ class _DebouncedFormFieldState extends FormFieldState<String> {
   @override
   void initState() {
     super.initState();
-    final widget = super.widget as DebouncedFormField;
+    final widget = super.widget as DebouncedTextFormField;
     if (widget.initialValue != null) {
       setValue(widget.initialValue);
     }
@@ -176,7 +179,7 @@ class _DebouncedFormFieldState extends FormFieldState<String> {
   @override
   void didChange(String? value) {
     super.didChange(value);
-    final widget = super.widget as DebouncedFormField;
+    final widget = super.widget as DebouncedTextFormField;
 
     if (value != null) {
       final hasError = widget.validator!(value) != null;
@@ -201,7 +204,7 @@ class _DebouncedFormFieldState extends FormFieldState<String> {
   }
 
   @override
-  void didUpdateWidget(DebouncedFormField oldWidget) {
+  void didUpdateWidget(DebouncedTextFormField oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.initialValue != widget.initialValue) {
       setValue(widget.initialValue);

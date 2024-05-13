@@ -7,7 +7,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: DebouncedFormField(
+          body: DebouncedTextFormField(
             validator: (value) => value!.length < 5 ? 'Too short' : null,
           ),
         ),
@@ -26,7 +26,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: DebouncedFormField(
+          body: DebouncedTextFormField(
             validator: (value) => value!.length < 5 ? 'Too short' : null,
           ),
         ),

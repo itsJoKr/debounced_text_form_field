@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Rename to DebouncedTextFormField
+
 ## 1.0.2
 
 * Fix formatting

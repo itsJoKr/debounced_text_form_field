@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
-              child: DebouncedFormField(
+              child: DebouncedTextFormField(
                 decoration: const InputDecoration(
                   hintText: 'Enter email',
                   prefixIcon: Icon(Icons.mail),

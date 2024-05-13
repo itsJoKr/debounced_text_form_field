@@ -1,6 +1,6 @@
 name: debounced_text_form_field
 description: "A drop-in replacement for TextFormField that debounces validation"
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/itsJoKr/debounced_text_form_field
 
 environment:
