@@ -3,6 +3,11 @@
 
 Drop in replacement for `TextFormField` that debounces the validation.
 
+Version 2 requires Dart 3.14 and Flutter 3.50 or later. Use the standalone
+`material_ui` package for the surrounding Material widgets and types such as
+`InputDecoration`.
+
+
 ## Motivation
 
 While there are other debouncing packages available, this one builds on foundation of Form and validation provided by Flutter. 
@@ -10,6 +15,9 @@ While there are other debouncing packages available, this one builds on foundati
 Just replace your `TextFormField` with `DebouncedTextFormField` and you are good to go. No extra widgets or builders needed.
 
 ```dart
+import 'package:debounced_text_form_field/debounced_text_form_field.dart';
+import 'package:material_ui/material_ui.dart';
+
 DebouncedTextFormField(
   decoration: const InputDecoration(
     hintText: 'Enter email',
