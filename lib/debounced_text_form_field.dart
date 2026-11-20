@@ -1,11 +1,9 @@
-library debounced_text_form_field;
-
 import 'dart:async';
-
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
+
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A drop-in replacement for TextFormField that debounces the validation.
 ///
@@ -81,78 +79,82 @@ class DebouncedTextFormField extends FormField<String> {
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     ContentInsertionConfiguration? contentInsertionConfiguration,
     Clip clipBehavior = Clip.hardEdge,
-    bool scribbleEnabled = true,
+    @Deprecated('Use stylusHandwritingEnabled instead.') bool? scribbleEnabled,
+    bool stylusHandwritingEnabled =
+        EditableText.defaultStylusHandwritingEnabled,
     bool canRequestFocus = true,
   }) : super(
-          builder: (formFieldState) {
-            return TextFormField(
-              decoration: decoration?.copyWith(
-                    // errorText has priority, if developer sets it
-                    errorText: decoration.errorText ?? formFieldState.errorText,
-                  ) ??
-                  InputDecoration(errorText: formFieldState.errorText),
-              controller: controller,
-              focusNode: focusNode,
-              keyboardType: keyboardType,
-              textInputAction: textInputAction,
-              autofocus: autofocus,
-              obscureText: obscureText,
-              initialValue: initialValue,
-              inputFormatters: inputFormatters,
-              maxLines: maxLines,
-              minLines: minLines,
-              enabled: enabled,
-              onChanged: formFieldState.didChange,
-              onFieldSubmitted: onFieldSubmitted,
-              style: style,
-              strutStyle: strutStyle,
-              textDirection: textDirection,
-              textAlign: textAlign,
-              textAlignVertical: textAlignVertical,
-              readOnly: readOnly,
-              showCursor: showCursor,
-              obscuringCharacter: obscuringCharacter,
-              textCapitalization: textCapitalization,
-              smartDashesType: smartDashesType,
-              smartQuotesType: smartQuotesType,
-              enableSuggestions: enableSuggestions,
-              maxLengthEnforcement: maxLengthEnforcement,
-              expands: expands,
-              maxLength: maxLength,
-              onTap: onTap,
-              onTapOutside: onTapOutside,
-              onEditingComplete: onEditingComplete,
-              cursorWidth: cursorWidth,
-              cursorHeight: cursorHeight,
-              cursorRadius: cursorRadius,
-              cursorColor: cursorColor,
-              keyboardAppearance: keyboardAppearance,
-              scrollPadding: scrollPadding,
-              enableInteractiveSelection: enableInteractiveSelection,
-              selectionControls: selectionControls,
-              buildCounter: buildCounter,
-              scrollPhysics: scrollPhysics,
-              autofillHints: autofillHints,
-              scrollController: scrollController,
-              restorationId: restorationId,
-              enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
-              mouseCursor: mouseCursor,
-              contextMenuBuilder: contextMenuBuilder,
-              spellCheckConfiguration: spellCheckConfiguration,
-              magnifierConfiguration: magnifierConfiguration,
-              undoController: undoController,
-              onAppPrivateCommand: onAppPrivateCommand,
-              cursorOpacityAnimates: cursorOpacityAnimates,
-              selectionHeightStyle: selectionHeightStyle,
-              selectionWidthStyle: selectionWidthStyle,
-              dragStartBehavior: dragStartBehavior,
-              contentInsertionConfiguration: contentInsertionConfiguration,
-              clipBehavior: clipBehavior,
-              scribbleEnabled: scribbleEnabled,
-              canRequestFocus: canRequestFocus,
-            );
-          },
-        );
+         builder: (formFieldState) {
+           return TextFormField(
+             decoration:
+                 decoration?.copyWith(
+                   // errorText has priority, if developer sets it
+                   errorText: decoration.errorText ?? formFieldState.errorText,
+                 ) ??
+                 InputDecoration(errorText: formFieldState.errorText),
+             controller: controller,
+             focusNode: focusNode,
+             keyboardType: keyboardType,
+             textInputAction: textInputAction,
+             autofocus: autofocus,
+             obscureText: obscureText,
+             initialValue: initialValue,
+             inputFormatters: inputFormatters,
+             maxLines: maxLines,
+             minLines: minLines,
+             enabled: enabled,
+             onChanged: formFieldState.didChange,
+             onFieldSubmitted: onFieldSubmitted,
+             style: style,
+             strutStyle: strutStyle,
+             textDirection: textDirection,
+             textAlign: textAlign,
+             textAlignVertical: textAlignVertical,
+             readOnly: readOnly,
+             showCursor: showCursor,
+             obscuringCharacter: obscuringCharacter,
+             textCapitalization: textCapitalization,
+             smartDashesType: smartDashesType,
+             smartQuotesType: smartQuotesType,
+             enableSuggestions: enableSuggestions,
+             maxLengthEnforcement: maxLengthEnforcement,
+             expands: expands,
+             maxLength: maxLength,
+             onTap: onTap,
+             onTapOutside: onTapOutside,
+             onEditingComplete: onEditingComplete,
+             cursorWidth: cursorWidth,
+             cursorHeight: cursorHeight,
+             cursorRadius: cursorRadius,
+             cursorColor: cursorColor,
+             keyboardAppearance: keyboardAppearance,
+             scrollPadding: scrollPadding,
+             enableInteractiveSelection: enableInteractiveSelection,
+             selectionControls: selectionControls,
+             buildCounter: buildCounter,
+             scrollPhysics: scrollPhysics,
+             autofillHints: autofillHints,
+             scrollController: scrollController,
+             restorationId: restorationId,
+             enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
+             mouseCursor: mouseCursor,
+             contextMenuBuilder: contextMenuBuilder,
+             spellCheckConfiguration: spellCheckConfiguration,
+             magnifierConfiguration: magnifierConfiguration,
+             undoController: undoController,
+             onAppPrivateCommand: onAppPrivateCommand,
+             cursorOpacityAnimates: cursorOpacityAnimates,
+             selectionHeightStyle: selectionHeightStyle,
+             selectionWidthStyle: selectionWidthStyle,
+             dragStartBehavior: dragStartBehavior,
+             contentInsertionConfiguration: contentInsertionConfiguration,
+             clipBehavior: clipBehavior,
+             stylusHandwritingEnabled:
+                 scribbleEnabled ?? stylusHandwritingEnabled,
+             canRequestFocus: canRequestFocus,
+           );
+         },
+       );
 
   /// Called when the user initiates a change to the value of the field
   final ValueChanged<String>? onChanged;
@@ -189,8 +191,10 @@ class _DebouncedFormFieldState extends FormFieldState<String> {
       } else {
         // If there's an error, we debounce it
         _debounceTimer?.cancel();
-        _debounceTimer =
-            Timer(widget.debounceDuration, _onDebounceTimerFinished);
+        _debounceTimer = Timer(
+          widget.debounceDuration,
+          _onDebounceTimerFinished,
+        );
       }
     }
 

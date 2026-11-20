@@ -1,9 +1,11 @@
 import 'package:debounced_text_form_field/debounced_text_form_field.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() {
-  testWidgets('Error is not shown immediately but after the debounce delay', (tester) async {
+  testWidgets('Error is not shown immediately but after the debounce delay', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -22,7 +24,9 @@ void main() {
     expect(find.text('Too short'), findsOne);
   });
 
-  testWidgets('Error is hidden immediately after correct input', (tester) async {
+  testWidgets('Error is hidden immediately after correct input', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
