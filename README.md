@@ -3,10 +3,10 @@
 
 Drop in replacement for `TextFormField` that debounces the validation.
 
-Version 2 requires Dart 3.14 and Flutter 3.50 or later. Use the standalone
+Version 2 requires Dart 3.13 and Flutter 3.47 or later. Use the standalone
 `material_ui` package for the surrounding Material widgets and types such as
-`InputDecoration`.
-
+`InputDecoration`. Apps that still import `package:flutter/material.dart` should
+stay on 1.0.3.
 
 ## Motivation
 
